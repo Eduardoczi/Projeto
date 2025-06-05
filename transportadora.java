@@ -4,7 +4,6 @@ public class Transportadora {
 
     private int qtdParceiras;
     private double valorFrete;
-    private double distancia;
     private double toneladas;
     private String transportadoraEscolhida;
 
@@ -50,16 +49,16 @@ public class Transportadora {
         this.valorFrete = valorFrete;
     }
 
-    public void calcularFrete(String transportadoraEscolhida,double distancia, double toneladas){
+    public void calcularFrete(String transportadoraEscolhida, double toneladas){
 
         Local local = Local.buscarcidadeTransportadora(transportadoraEscolhida);
 
         if (local != null) {
             double valorFinal;
             double valorExtra = 200;
-            valorFinal = valorExtra * toneladas - 1;
+            valorFinal = valorExtra * toneladas;
             System.out.println("O frete fixo para " + local.getCidadeTransportadora() + " é: R$ " + local.getValorFreteFixo());
-            System.out.println("O valor final do frete ficou: " + valorFinal);
+            System.out.println("O valor final do frete ficou: " + (valorFinal + local.getValorFreteFixo()));
         } else {
             System.out.println("Transportadora não encontrada nesta cidade");
         }
